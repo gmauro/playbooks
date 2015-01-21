@@ -1,0 +1,16 @@
+# 
+
+- hosts: workhorse
+  vars:
+    dest: ~/.gitconfig
+  tasks:
+  - name: verify if dest file exist
+    file: path={{ dest }} state=touch
+  - name: set push.default globally
+    ini_file: dest={{ dest }} section=push option=default value=simple backup=yes
+  - name: set credential.helper globally
+    ini_file: dest={{ dest }} section=credential option=helper value='cache --timeout=3600' backup=yes
+  - name: set graph alias
+    ini_file:  dest={{ dest }} section=alias option=graph value="log --date-order --graph --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar'" backup=yes
+  - name: set lg alias
+    ini_file:  dest={{ dest }} section=alias option=lg value="log --color --date-order --decorate --oneline" backup=yes
