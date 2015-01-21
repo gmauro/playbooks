@@ -1,0 +1,3 @@
+[workhorse]
+coltrane	ansible_connection=local
+nora01.crs4.int	ansible_ssh_user=gmauro
