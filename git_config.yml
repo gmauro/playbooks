@@ -1,6 +1,6 @@
 # 
 
-- hosts: workhorse
+- hosts: workhorses
   vars:
     dest: ~/.gitconfig
   tasks:
@@ -14,3 +14,5 @@
     ini_file:  dest={{ dest }} section=alias option=graph value="log --date-order --graph --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar'" backup=yes
   - name: set lg alias
     ini_file:  dest={{ dest }} section=alias option=lg value="log --color --date-order --decorate --oneline" backup=yes
+  - name: set st alias
+    ini_file: dest={{ dest }} section=alias option=st value=status backup=yes
